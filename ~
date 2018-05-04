@@ -1,0 +1,105 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
+
+
+class HelloController extends Controller
+{
+  
+   public function index()
+   {
+       $data =  ['one', 'two', 'three', 'four', 'five'];
+       # return view('hello.index', ['msg'=>'']);
+       return view('hello.index',['data'=>$data]);
+   }
+}
+/*
+   public function post(Request $request)
+   {
+       return view('hello.index', ['msg'=>$request->msg]);
+   }
+
+}
+*/
+/*
+class HelloController extends Controller
+{
+  
+   public function index()
+   {
+
+       return view('hello.index', ['data' => '']);
+     $data = [
+           'msg'=>'お名前を入力下さい。',
+       ];
+       return view('hello.index', $data);
+
+   }
+
+   public function post(Request $request)
+   {
+
+       $msg = $request->msg;
+       $data = [
+           'msg'=>'こんにちは、' . $msg . 'さん！',
+       ];
+
+       return view('hello.index', ['msg'=>$request->msg]);
+   }
+
+}
+/*
+class HelloController extends Controller
+{
+
+    public function index() {
+        $data = [
+            'msg'=>'お名前を入力してください',
+            # 'msg'=>'これはコントローラから渡されたメッセージです。',
+            # 'id'=>$request->id
+        ];
+        return view('hello.index',$data);
+    }
+
+    public function post(Request $request) {
+        $msg = $request->msg;
+        $data = [
+            'msg'=>'こんにちは' . $msg . 'さん！',
+            # 'msg'=>'これはコントローラから渡されたメッセージです。',
+            # 'id'=>$request->id
+        ];
+        return view('hello.index',$data);
+    }
+
+}
+*/
+/*  
+   public function index(Request $request, Response $response) {
+
+$html = <<<EOF
+<html>
+<head>
+<title>Hello/Index</title>
+<style>
+body {font-size:16pt; color:#999; }
+h1 { font-size:120pt; text-align:right; color:#fafafa;
+  margin:-50px 0px -120px 0px; }
+</style>
+</head>
+<body>
+  <h1>Hello</h1>
+  <h3>Request</h3>
+  <pre>{$request}</pre>
+  <h3>Response</h3>
+  <pre>{$response}</pre>
+</body>
+</html>
+EOF;
+       $response->setContent($html);
+       return $response;
+   }
+*/
