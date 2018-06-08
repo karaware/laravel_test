@@ -9,102 +9,22 @@ use Illuminate\Http\Response;
 
 class HelloController extends Controller
 {
-  
-   public function index()
-   {
-/*
-       $data = [
-           ['name'=>'山田たろう', 'mail'=>'taro@yamada'],
-           ['name'=>'田中はなこ', 'mail'=>'hanako@flower'],
-           ['name'=>'鈴木さちこ', 'mail'=>'sachico@happy']
-       ];
-*/
-       return view('hello.index',['message'=>'Hello!']);
-   }
-}
-/*
-   public function post(Request $request)
-   {
-       return view('hello.index', ['msg'=>$request->msg]);
-   }
 
-}
-*/
-/*
-class HelloController extends Controller
-{
-  
-   public function index()
-   {
-
-       return view('hello.index', ['data' => '']);
-     $data = [
-           'msg'=>'お名前を入力下さい。',
-       ];
-       return view('hello.index', $data);
-
-   }
-
-   public function post(Request $request)
-   {
-
-       $msg = $request->msg;
-       $data = [
-           'msg'=>'こんにちは、' . $msg . 'さん！',
-       ];
-
-       return view('hello.index', ['msg'=>$request->msg]);
-   }
-
-}
-/*
-class HelloController extends Controller
-{
-
-    public function index() {
-        $data = [
-            'msg'=>'お名前を入力してください',
-            # 'msg'=>'これはコントローラから渡されたメッセージです。',
-            # 'id'=>$request->id
-        ];
-        return view('hello.index',$data);
+    public function index(Request $request)
+    {
+        return view('hello.index', ['msg'=>'フォームを入力 : ']);
     }
 
-    public function post(Request $request) {
-        $msg = $request->msg;
-        $data = [
-            'msg'=>'こんにちは' . $msg . 'さん！',
-            # 'msg'=>'これはコントローラから渡されたメッセージです。',
-            # 'id'=>$request->id
+    public function post(Request $request)
+    {
+        $validate_rule = [
+            'name' => 'required',
+            'mail' => 'email',
+            'age' => 'numeric|between:0,150',
         ];
-        return view('hello.index',$data);
+        $this->validate($request, $validate_rule);
+        return view('hello.index', ['msg'=>'正しく入力されました！']);
+
     }
 
 }
-*/
-/*  
-   public function index(Request $request, Response $response) {
-
-$html = <<<EOF
-<html>
-<head>
-<title>Hello/Index</title>
-<style>
-body {font-size:16pt; color:#999; }
-h1 { font-size:120pt; text-align:right; color:#fafafa;
-  margin:-50px 0px -120px 0px; }
-</style>
-</head>
-<body>
-  <h1>Hello</h1>
-  <h3>Request</h3>
-  <pre>{$request}</pre>
-  <h3>Response</h3>
-  <pre>{$response}</pre>
-</body>
-</html>
-EOF;
-       $response->setContent($html);
-       return $response;
-   }
-*/

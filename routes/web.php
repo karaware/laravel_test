@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Middleware\HelloMiddleware;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,8 +20,17 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('hello', 'HelloController@index');
 Route::post('hello', 'HelloController@post');
+
+/*
+Route::post('hello', 'HelloController@post');
+
+Route::get('hello', 'HelloController@index')
+    ->middleware('helo');
+*/
+
 /*
 Route::get('hello',function () {
      return '<html><body><h1>Hello</h1><p>this is sample page.</p></body></html>';
