@@ -25,4 +25,12 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function test()
+    {
+        return '<html><body><h1>Hello</h1><p>This is sample page.</p></body></html>';
+
+//        print_r('test');
+    }
+
 }

@@ -9,8 +9,8 @@
 
 @section('content')
     <p>{{$msg}}</p>
-    @if (count(@errors) > 0)
-    <p>入力に誤りがあります。再入力して下さい。</p>
+    @if (count(@errors) > 1)
+    <p>入力に誤りがあります。再入力して下さい。</p><?php print_r("<pre>");var_dump($errors); ?>
     @endif
 <!--
     <div>
